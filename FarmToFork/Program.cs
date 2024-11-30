@@ -1,8 +1,15 @@
+using FarmToFork.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<FarmToForkDbContext>(opt =>
+{
+    opt.UseSqlServer("Server=DESKTOP-UM6TF1M;Database=FarmToFork;Integrated Security=true;TrustServerCertificate=true;"); 
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
