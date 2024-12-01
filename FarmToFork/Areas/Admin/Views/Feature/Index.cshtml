@@ -1,0 +1,26 @@
+@model List<FarmToFork.Models.Feature>
+<div class="container-fluid p-3">
+    <table class="table fs-5">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Icon</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var feature in Model)
+        {
+            <tr>
+                <th scope="row">@feature.Id</th>
+                <td>@feature.Title</td>
+                <td>@feature.Description</td>
+                <td>@feature.Icon</td>
+            </tr>
+        }
+       
+        </tbody>
+    </table>
+    <a class="btn btn-primary w-100" asp-controller="Feature" asp-action="Add">Add  Feature</a>
+</div>

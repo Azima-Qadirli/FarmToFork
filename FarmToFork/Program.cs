@@ -1,10 +1,15 @@
 using FarmToFork.Context;
+using FarmToFork.Repositories;
+using FarmToFork.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
 
 builder.Services.AddDbContext<FarmToForkDbContext>(opt =>
 {
@@ -26,6 +31,19 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseEndpoints(endpoint =>
+{
+endpoint.MapAreaControllerRoute(
+    name:"admin",
+    pattern:"admin/{controller=Home}/{action=Index}/{id?}",
+    areaName:"admin"
+    );
+    endpoint.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.MapControllerRoute(
     name: "default",
