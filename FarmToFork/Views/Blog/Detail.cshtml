@@ -1,0 +1,324 @@
+@using FarmToFork.Models
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model FarmToFork.Models.Blog
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+  <div class="container text-center py-5" style="max-width: 900px;">
+    <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Our Blog & News</h4>
+    <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Pages</a></li>
+      <li class="breadcrumb-item active text-primary">Blog & News</li>
+    </ol>
+  </div>
+</div>
+<!-- Header End -->
+<section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ftco-animate">
+            <h2 class="mb-3">@Model.Title1</h2>
+            <p>@Model.Description1</p>
+            <p>
+              <img src="~/images/blogs/@Model.FileName" alt="" class="img-fluid">
+            </p>
+            <h2>@Model.Title2</h2>
+            <p>@Model.Description2</p>
+            <div class="tag-widget post-tag-container mb-5 mt-5">
+              <div class="tagcloud">
+                @foreach(Tag tag in Model.BlogTags.Select(x=>x.Tag).ToList())
+                {
+                  <a href="#" class="tag-cloud-link border-danger text-danger">@tag.Name</a>
+                }
+              </div>
+            </div>
+            
+            <div class="about-author d-flex p-4 bg-light">
+              <div class="bio mr-5">
+                <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
+              </div>
+              <div class="desc">
+                <h3>George Washington</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+              </div>
+            </div>
+
+
+            <div class="pt-5 mt-5">
+              <h3 class="mb-5">6 Comments</h3>
+              <ul class="comment-list">
+                <li class="comment">
+                  <div class="vcard bio">
+                    <img src="images/person_1.jpg" alt="Image placeholder">
+                  </div>
+                  <div class="comment-body">
+                    <h3>John Doe</h3>
+                    <div class="meta">Oct. 29, 2019 at 1:21pm</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+                </li>
+
+                <li class="comment">
+                  <div class="vcard bio">
+                    <img src="images/person_1.jpg" alt="Image placeholder">
+                  </div>
+                  <div class="comment-body">
+                    <h3>John Doe</h3>
+                    <div class="meta">Oct. 29, 2019 at 1:21pm</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+
+                  <ul class="children">
+                    <li class="comment">
+                      <div class="vcard bio">
+                        <img src="images/person_1.jpg" alt="Image placeholder">
+                      </div>
+                      <div class="comment-body">
+                        <h3>John Doe</h3>
+                        <div class="meta">Oct. 29, 2019 at 1:21pm</div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                        <p><a href="#" class="reply">Reply</a></p>
+                      </div>
+
+
+                      <ul class="children">
+                        <li class="comment">
+                          <div class="vcard bio">
+                            <img src="images/person_1.jpg" alt="Image placeholder">
+                          </div>
+                          <div class="comment-body">
+                            <h3>John Doe</h3>
+                            <div class="meta">Oct. 29, 2019 at 1:21pm</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                            <p><a href="#" class="reply">Reply</a></p>
+                          </div>
+
+                            <ul class="children">
+                              <li class="comment">
+                                <div class="vcard bio">
+                                  <img src="images/person_1.jpg" alt="Image placeholder">
+                                </div>
+                                <div class="comment-body">
+                                  <h3>John Doe</h3>
+                                  <div class="meta">Oct. 29, 2019 at 1:21pm</div>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                  <p><a href="#" class="reply">Reply</a></p>
+                                </div>
+                              </li>
+                            </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="comment">
+                  <div class="vcard bio">
+                    <img src="images/person_1.jpg" alt="Image placeholder">
+                  </div>
+                  <div class="comment-body">
+                    <h3>John Doe</h3>
+                    <div class="meta">Oct. 29, 2019 at 1:21pm</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+                </li>
+              </ul>
+              <!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">Leave a comment</h3>
+                <form action="#" class="p-5 bg-light">
+                  <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" class="form-control" id="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" class="form-control" id="website">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+
+          </div> <!-- .col-md-8 -->
+          <div class="col-md-4 sidebar ftco-animate">
+            <div class="sidebar-box">
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <span class="icon icon-search"></span>
+                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                </div>
+              </form>
+            </div>
+            <div class="sidebar-box ftco-animate">
+              <div class="categories">
+                <h3>Categories</h3>
+                @foreach (Category category in ViewBag.Categories)
+                {
+                  if (category.Id == Model.CategoryId)
+                  {
+                    <li><a href="#" style="color: red">@category.Name <span style="color: red">(@category.Blogs.Count)</span></a></li>
+                  }
+                  else
+                  {
+                    <li><a href="#">@category.Name <span>(@category.Blogs.Count)</span></a></li>
+                  }
+                }
+              </div>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Recent Blog</h3>
+              @foreach (Blog blog in ViewBag.Blogs)
+              {
+                <div class="block-21 mb-4 d-flex">
+                  <a class="blog-img mr-4" style="background-image: url('/images/blogs/@(blog.FileName)');"></a>
+                  <div class="text">
+                    <h3 class="heading"><a href="#">@blog.Title1</a></h3>
+                    <div class="meta">
+                      <div><a href="#"><span class="icon-calendar"></span>@blog.CreatedAt.ToShortDateString()</a></div>
+                      <div><a href="#"><span class="icon-person"></span> @blog.Author.Name</a></div>
+                      <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                    </div>
+                  </div>
+                </div>
+              }
+              
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Tag Cloud</h3>
+              <div class="tagcloud">
+                @foreach (Tag tag in ViewBag.Tags)
+                {
+                  <a href="#" class="tag-cloud-link">@tag.Name</a>
+                }
+                
+              </div>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Paragraph</h3>
+              <p>@Model.Paragraph</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      </section> <!-- .section -->
+      <style>
+    .sidebar-wrap {
+        margin-bottom: 60px; }
+    .sidebar-wrap .heading {
+        font-size: 18px;
+        text-transform: uppercase; }
+    .sidebar-wrap .fields {
+        width: 100%;
+        position: relative; }
+    .sidebar-wrap .fields .form-control {
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: transparent;
+        background: #fff !important;
+        color: #4d4d4d !important;
+        border: 1px solid #e6e6e6;
+        font-size: 14px;
+        width: 100%;
+        height: 52px !important;
+        padding: 10px 20px;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        border-radius: 0; }
+    .sidebar-wrap .fields .form-control::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: #4d4d4d; }
+    .sidebar-wrap .fields .form-control::-moz-placeholder {
+        /* Firefox 19+ */
+        color: #4d4d4d; }
+    .sidebar-wrap .fields .form-control:-ms-input-placeholder {
+        /* IE 10+ */
+        color: #4d4d4d; }
+    .sidebar-wrap .fields .form-control:-moz-placeholder {
+        /* Firefox 18- */
+        color: #4d4d4d; }
+    .sidebar-wrap .fields .icon {
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        font-size: 14px;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        color: rgba(0, 0, 0, 0.7); }
+    @@media (max-width: 767.98px) {
+        .sidebar-wrap .fields .icon {
+            right: 10px; } }
+    .sidebar-wrap .fields .select-wrap {
+        position: relative; }
+    .sidebar-wrap .fields .select-wrap select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none; }
+    .sidebar-wrap .form-group .btn {
+        width: 100%;
+        display: block !important;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+        border-radius: 2px; }
+
+    .sidebar-box {
+        margin-bottom: 30px;
+        padding: 25px;
+        font-size: 15px;
+        width: 100%;
+        float: left;
+        background: #fff; }
+    .sidebar-box *:last-child {
+        margin-bottom: 0; }
+    .sidebar-box h3 {
+        font-size: 18px;
+        margin-bottom: 15px; }
+
+    .categories li, .sidelink li {
+        position: relative;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #dee2e6;
+        list-style: none; }
+    .categories li:last-child, .sidelink li:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-bottom: 0; }
+    .categories li a, .sidelink li a {
+        display: block;
+        color: #1a1a1a; }
+    .categories li a span, .sidelink li a span {
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #ccc; }
+    .categories li.active a, .sidelink li.active a {
+        color: #000000;
+        font-style: italic; }
+
+
+
+</style>

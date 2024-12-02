@@ -18,7 +18,7 @@
                 <th scope="row">@feature.Id</th>
                 <td>@feature.Title</td>
                 <td>@feature.Description</td>
-                <td><i class="fas @feature.Icon"></i></td>
+                <td><i class="@feature.Icon"></i></td>
                 <td>
                     <a asp-action="Update" asp-controller="feature" asp-route-id="@feature.Id">
                         <i class="fa-solid fa-pen"></i>

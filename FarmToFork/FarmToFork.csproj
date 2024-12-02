@@ -69,6 +69,7 @@
 
     <ItemGroup>
       <Folder Include="wwwroot\admin\" />
+      <Folder Include="wwwroot\images\blogs\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -79,6 +80,12 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Areas\Admin\Views\Category\Add.cshtml" />
+      <AdditionalFiles Include="Areas\Admin\Views\Category\Index.cshtml" />
+      <AdditionalFiles Include="Areas\Admin\Views\Category\Update.cshtml" />
     </ItemGroup>
 
 </Project>

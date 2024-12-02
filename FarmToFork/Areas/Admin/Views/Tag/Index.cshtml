@@ -1,0 +1,34 @@
+@model List<FarmToFork.Models.Tag>
+<div class="container-fluid p-2">
+    <table class="table fs-5">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var tag in Model)
+        {
+            <tr>
+                <th scope="row">@tag.Id</th>
+                <td>@tag.Name</td>
+                <td>
+                    <a asp-action="Update" asp-controller="tag" asp-route-id="@tag.Id">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                </td>
+                <td>
+                    <a  onclick="if(!confirm('Are you sure?')){ return false; }" asp-action="Remove" asp-controller="tag" asp-route-id="@tag.Id">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+       
+        </tbody>
+    </table>
+    <a class="btn btn-primary w-100" asp-controller="tag" asp-action="Add">Add tag</a>
+</div>
