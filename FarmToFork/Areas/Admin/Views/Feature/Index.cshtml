@@ -1,5 +1,5 @@
 @model List<FarmToFork.Models.Feature>
-<div class="container-fluid p-3">
+<div class="container-fluid p-2">
     <table class="table fs-5">
         <thead>
         <tr>
@@ -7,6 +7,8 @@
             <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col">Icon</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -16,7 +18,17 @@
                 <th scope="row">@feature.Id</th>
                 <td>@feature.Title</td>
                 <td>@feature.Description</td>
-                <td>@feature.Icon</td>
+                <td><i class="fas @feature.Icon"></i></td>
+                <td>
+                    <a asp-action="Update" asp-controller="feature" asp-route-id="@feature.Id">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                </td>
+                <td>
+                    <a  onclick="if(!confirm('Are you sure?')){ return false; }" asp-action="Remove" asp-controller="feature" asp-route-id="@feature.Id">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
             </tr>
         }
        

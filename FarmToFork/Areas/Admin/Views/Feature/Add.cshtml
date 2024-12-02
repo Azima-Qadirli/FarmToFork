@@ -5,14 +5,34 @@
         <div class="mb-3">
             <label asp-for="Title" class="form-label">Title</label>
             <input type="text" class="form-control border-danger"  asp-for="Title">
+            <span class="text-danger fs-6" asp-validation-for="Title"></span>
         </div>
         <div class="mb-3">
             <label for="Description" class="form-label">Description</label>
             <textarea class="form-control border-danger" asp-for="Description" rows="3"></textarea>
+            <span class="text-danger fs-6" asp-validation-for="Description"></span>
         </div>
         <div class="mb-3">
             <label asp-for="Icon" class="form-label">Icon</label>
-            <input type="text" class="form-control border-danger" asp-for="Icon">
+            <div class="form-check">
+                <input class="form-check-input border-danger" value="fa-solid fa-sun" type="radio" name="Icon" asp-for="Icon">
+                <label class="form-check-label" asp-for="Icon">
+                    <i class="fa-solid fa-sun"></i>
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input border-danger" value="fa-brands fa-product-hunt" type="radio" name="Icon" asp-for="Icon">
+                <label class="form-check-label" asp-for="Icon">
+                    <i class="fa-brands fa-product-hunt"></i>
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input border-danger" value="fa-solid fa-shield" type="radio" name="Icon" asp-for="Icon">
+                <label class="form-check-label" asp-for="Icon">
+                    <i class="fa-solid fa-shield"></i>
+                </label>
+            </div>
+            <span class="text-danger fs-6" asp-validation-for="Icon"></span>
         </div>
         <button class="btn btn-primary w-100 mt-4" type="submit">Add  Feature</button>
     </form>
