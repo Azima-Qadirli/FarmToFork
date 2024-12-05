@@ -1,6 +1,8 @@
 using FarmToFork.Context;
+using FarmToFork.Models;
 using FarmToFork.Repositories;
 using FarmToFork.Repositories.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,23 @@ builder.Services.AddDbContext<FarmToForkDbContext>(opt =>
 {
     opt.UseSqlServer("Server=DESKTOP-UM6TF1M;Database=FarmToFork;Integrated Security=true;TrustServerCertificate=true;"); 
 });
+
+builder.Services.AddIdentity<AppUser,IdentityRole>(options =>
+    {
+        options.Password.RequireDigit = true;
+        options.Password.RequireLowercase = true;
+        options.Password.RequireNonAlphanumeric = true;
+        options.Password.RequireUppercase = true;
+        options.Password.RequiredLength = 8;
+        options.User.RequireUniqueEmail = true;
+        options.Lockout.MaxFailedAccessAttempts = 5;
+        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    })
+    .AddEntityFrameworkStores<FarmToForkDbContext>()
+    .AddDefaultTokenProviders();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

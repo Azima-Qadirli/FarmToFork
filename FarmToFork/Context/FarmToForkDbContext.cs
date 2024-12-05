@@ -1,9 +1,10 @@
 using FarmToFork.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FarmToFork.Context;
 
-public class FarmToForkDbContext:DbContext
+public class FarmToForkDbContext:IdentityDbContext<AppUser>
 {
     public FarmToForkDbContext(DbContextOptions<FarmToForkDbContext> options):base(options)
     {
