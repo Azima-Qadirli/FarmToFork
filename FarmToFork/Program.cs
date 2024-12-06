@@ -2,6 +2,7 @@ using FarmToFork.Context;
 using FarmToFork.Models;
 using FarmToFork.Repositories;
 using FarmToFork.Repositories.Interfaces;
+using FarmToFork.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
+builder.Services.AddScoped<IMailService, MailService>();
 
 builder.Services.AddDbContext<FarmToForkDbContext>(opt =>
 {
@@ -28,6 +29,7 @@ builder.Services.AddIdentity<AppUser,IdentityRole>(options =>
         options.User.RequireUniqueEmail = true;
         options.Lockout.MaxFailedAccessAttempts = 5;
         options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+        options.SignIn.RequireConfirmedEmail = true;
     })
     .AddEntityFrameworkStores<FarmToForkDbContext>()
     .AddDefaultTokenProviders();

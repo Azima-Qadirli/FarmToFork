@@ -1,0 +1,99 @@
+@model FarmToFork.Models.Account.LoginModel
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Login</h4>
+        <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active text-primary">Login</li>
+        </ol>
+    </div>
+</div>
+<!-- Header End -->
+
+<div class="row d-flex justify-content-center m-5">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div class="text text-danger" asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-for="UserNameOrEmail" placeholder="Username or Email">
+                        <span class="text text-danger small" asp-validation-for="UserNameOrEmail"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" asp-for="Password" placeholder="Password">
+                        <span class="text text-danger small" asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group d-flex justify-content-between p-2">
+                        <label class="form-check-label"><input type="checkbox" asp-for="RememberMe"> Remember me</label>
+                        <a asp-action="forgotPassword" asp-controller="account" style="text-decoration: none; color: #3CB815">Forgot Password?</a>
+                        
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 p-2">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        padding: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-body {
+        padding: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        border-radius: 10px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+    }
+
+    .btn {
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #28a745; /* Green color */
+        border-color: #28a745;
+    }
+
+    .btn-primary:hover {
+        background-color: #218838; /* Darker green on hover */
+        border-color: #1e7e34;
+    }
+
+    .text-danger {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .text-danger.small {
+        font-size: 10px;
+    }
+</style>
