@@ -15,4 +15,5 @@ public class FarmToForkDbContext:IdentityDbContext<AppUser>
     public DbSet<Tag> Tags { get; set; }
     public DbSet<Blog> Blogs { get; set; }
     public DbSet<BlogTag>BlogTags { get; set; }
+    public DbSet<Message>Messages { get; set; }
 }

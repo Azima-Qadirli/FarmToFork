@@ -4,6 +4,7 @@ using FarmToFork.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarmToFork.Migrations
 {
     [DbContext(typeof(FarmToForkDbContext))]
-    partial class FarmToForkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241209191226_addedMessages")]
+    partial class addedMessages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -270,9 +273,6 @@ namespace FarmToFork.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Body")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -292,8 +292,6 @@ namespace FarmToFork.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
 
                     b.ToTable("Messages");
                 });
@@ -492,15 +490,6 @@ namespace FarmToFork.Migrations
                     b.Navigation("Tag");
                 });
 
-            modelBuilder.Entity("FarmToFork.Models.Message", b =>
-                {
-                    b.HasOne("FarmToFork.Models.AppUser", "User")
-                        .WithMany("Messages")
-                        .HasForeignKey("AppUserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -550,11 +539,6 @@ namespace FarmToFork.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("FarmToFork.Models.AppUser", b =>
-                {
-                    b.Navigation("Messages");
                 });
 
             modelBuilder.Entity("FarmToFork.Models.Author", b =>

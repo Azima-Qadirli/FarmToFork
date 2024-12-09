@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FarmToFork.Areas.Admin.Controllers;
 [Area("Admin")]
+
 public class HomeController : Controller
 {
     // GET

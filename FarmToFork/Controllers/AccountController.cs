@@ -82,6 +82,12 @@ public class AccountController : Controller
                 return View(model);
             }
         }
+
+        if (!await _userManager.IsInRoleAsync(user, "User"))
+        {
+            ModelState.AddModelError("", "Invalid username or password.");
+            return View(model);
+        }
         var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, true);
         if (!result.Succeeded)
         {
@@ -121,7 +127,7 @@ public class AccountController : Controller
         var user = await _userManager.FindByEmailAsync(model.Email);
         if (user == null)
         {
-            return NotFound();
+            return RedirectToAction("Index", "Home");
         }
         var token = await _userManager.GeneratePasswordResetTokenAsync(user);
         var link = Url.Action("ResetPassword", "Account", new

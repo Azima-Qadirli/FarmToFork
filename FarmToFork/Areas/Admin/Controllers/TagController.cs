@@ -1,11 +1,13 @@
 using FarmToFork.Models;
 using FarmToFork.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FarmToFork.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = "Admin,SuperAdmin")]
 public class TagController : Controller
 {
     private readonly IRepository<Tag> _repository;

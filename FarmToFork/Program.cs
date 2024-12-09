@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using FarmToFork.Context;
 using FarmToFork.Models;
 using FarmToFork.Repositories;
@@ -9,7 +10,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddJsonOptions(x =>
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IMailService, MailService>();
@@ -57,7 +59,7 @@ app.UseEndpoints(endpoint =>
 {
 endpoint.MapAreaControllerRoute(
     name:"admin",
-    pattern:"admin/{controller=Home}/{action=Index}/{id?}",
+    pattern:"admin/{controller=Account}/{action=Login}/{id?}",
     areaName:"admin"
     );
     endpoint.MapControllerRoute(
@@ -69,5 +71,6 @@ endpoint.MapAreaControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.Run();
