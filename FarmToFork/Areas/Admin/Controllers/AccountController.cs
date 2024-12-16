@@ -1,9 +1,7 @@
 using FarmToFork.Models;
 using FarmToFork.Models.Account;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 
 namespace FarmToFork.Areas.Admin.Controllers;
 [Area("Admin")]
@@ -35,7 +33,7 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(LoginModel model)
     {
-        var user  = await _userManager.FindByNameAsync(model.UserNameOrEmail);
+        var user = await _userManager.FindByNameAsync(model.UserNameOrEmail);
         if (user == null)
         {
             user = await _userManager.FindByEmailAsync(model.UserNameOrEmail);
@@ -48,7 +46,7 @@ public class AccountController : Controller
 
         if (!await _userManager.IsInRoleAsync(user, "Admin") && !await _userManager.IsInRoleAsync(user, "SuperAdmin"))
         {
-            ModelState.AddModelError("", "Invalid username or password.");
+            ModelState.AddModelError("", "You don't have permission for this page.");
             return View(model);
         }
         var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, true);
@@ -65,10 +63,10 @@ public class AccountController : Controller
     public async Task<IActionResult> Logout()
     {
         await _signInManager.SignOutAsync();
-        return RedirectToAction("index", "home","default");
+        return RedirectToAction("index", "home", "default");
     }
 
-    
+
 
     // public async Task<IActionResult> AddAdmin()
     // {
@@ -84,24 +82,24 @@ public class AccountController : Controller
     //     await _userManager.AddToRolesAsync(user, new string[] { "Admin","SuperAdmin"});
     //     return Json("Oldiii");
     // }
-    // public async Task<IActionResult> AddRole()
-    // {
-    //     var role1= new IdentityRole()
-    //     {
-    //         Name = "Admin"
-    //     };
-    //     var role2 = new IdentityRole()
-    //     {
-    //         Name = "User"
-    //     };
-    //     var role3 = new IdentityRole()
-    //     {
-    //         Name = "SuperAdmin "
-    //     };
-    //     await _roleManager.CreateAsync(role1);
-    //     await _roleManager.CreateAsync(role2);
-    //     await _roleManager.CreateAsync(role3);
-    //     return Json("Yarandiiii");
-    // }
-    
+    //public async Task<IActionResult> AddRole()
+    //{
+    //    var role1 = new IdentityRole()
+    //    {
+    //        Name = "Admin"
+    //    };
+    //    var role2 = new IdentityRole()
+    //    {
+    //        Name = "User"
+    //    };
+    //    var role3 = new IdentityRole()
+    //    {
+    //        Name = "SuperAdmin "
+    //    };
+    //    await _roleManager.CreateAsync(role1);
+    //    await _roleManager.CreateAsync(role2);
+    //    await _roleManager.CreateAsync(role3);
+    //    return Json("Yarandiiii");
+    //}
+
 }
