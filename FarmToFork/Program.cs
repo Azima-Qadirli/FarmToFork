@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using FarmToFork.Context;
 using FarmToFork.Models;
 using FarmToFork.Repositories;
@@ -6,6 +5,7 @@ using FarmToFork.Repositories.Interfaces;
 using FarmToFork.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +18,10 @@ builder.Services.AddScoped<IMailService, MailService>();
 
 builder.Services.AddDbContext<FarmToForkDbContext>(opt =>
 {
-    opt.UseSqlServer("Server=DESKTOP-UM6TF1M;Database=FarmToFork;Integrated Security=true;TrustServerCertificate=true;"); 
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
 
-builder.Services.AddIdentity<AppUser,IdentityRole>(options =>
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     {
         options.Password.RequireDigit = true;
         options.Password.RequireLowercase = true;
@@ -57,11 +57,11 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoint =>
 {
-endpoint.MapAreaControllerRoute(
-    name:"admin",
-    pattern:"admin/{controller=Account}/{action=Login}/{id?}",
-    areaName:"admin"
-    );
+    endpoint.MapAreaControllerRoute(
+        name: "admin",
+        pattern: "admin/{controller=Account}/{action=Login}/{id?}",
+        areaName: "admin"
+        );
     endpoint.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}"
